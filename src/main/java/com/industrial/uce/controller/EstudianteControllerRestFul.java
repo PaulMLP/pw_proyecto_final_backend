@@ -36,12 +36,13 @@ public class EstudianteControllerRestFul {
 	private IEstudianteService estudianteService;
 
 	// GET
-	@GetMapping(path = "/{cedula}", produces = MediaType.APPLICATION_JSON_VALUE) 
+	@GetMapping(path = "/{cedula}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.OK)
 	public Estudiante consultarPorCedula(@PathVariable String cedula) {
 		return this.estudianteService.seleccionarPorCedula(cedula);
 	}
 
+	// GET
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<EstudianteTO>> consultarTodos() {
 		List<EstudianteTO> lista = this.estudianteService.buscarTodos();

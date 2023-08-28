@@ -19,7 +19,7 @@ public class QuejaImplService implements IQuejaService {
 
 	@Override
 	public void guardarQueja(Queja queja) {
-		this.quejaRepository.insertaQueja(queja);
+		 this.quejaRepository.insertaQueja(queja);
 	}
 
 	@Override

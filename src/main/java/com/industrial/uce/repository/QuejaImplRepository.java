@@ -8,11 +8,13 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.industrial.uce.repository.modelo.Queja;
 
 @Repository
 @Transactional
+@CrossOrigin
 public class QuejaImplRepository implements IQuejaRepository {
 
 	@PersistenceContext
@@ -21,6 +23,7 @@ public class QuejaImplRepository implements IQuejaRepository {
 	@Override
 	public void insertaQueja(Queja queja) {
 		this.entityManager.persist(queja);
+
 	}
 
 	@Override

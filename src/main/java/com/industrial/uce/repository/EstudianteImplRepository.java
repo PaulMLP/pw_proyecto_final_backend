@@ -14,6 +14,7 @@ import com.industrial.uce.repository.modelo.Estudiante;
 
 @Repository
 @Transactional
+
 public class EstudianteImplRepository implements IEstudianteRepository {
 
 	@PersistenceContext

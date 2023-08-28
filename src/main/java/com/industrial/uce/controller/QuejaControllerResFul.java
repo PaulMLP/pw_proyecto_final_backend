@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,8 +52,10 @@ public class QuejaControllerResFul {
 
 	// POST
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void guardar(@RequestBody Queja queja) {
+	public ResponseEntity<Queja> guardar(@RequestBody Queja queja) {
 		this.quejaService.guardarQueja(queja);
+		return new ResponseEntity<>(queja, HttpStatus.CREATED);
+		
 	}
 
 	// PUT
