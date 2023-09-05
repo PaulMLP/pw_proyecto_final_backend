@@ -32,13 +32,16 @@ import com.industrial.uce.service.to.EstudianteTO;
 @CrossOrigin
 public class EstudianteControllerRestFul {
 
+	// private static final Logger LOG =
+	// LoggerFactory.getLogger(EstudianteControllerRestFul.class);
+
 	@Autowired
 	private IEstudianteService estudianteService;
 
 	// GET
 	@GetMapping(path = "/{cedula}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.OK)
-	public Estudiante consultarPorCedula(@PathVariable String cedula) {
+	public EstudianteTO consultarPorCedula(@PathVariable String cedula) {
 		return this.estudianteService.seleccionarPorCedula(cedula);
 	}
 
@@ -68,15 +71,10 @@ public class EstudianteControllerRestFul {
 	}
 
 	// PATCH
-	@PatchMapping(path = "/{identificador}")
-	public void actualizarParcial(@RequestBody Estudiante estudiante, @PathVariable Integer identificador) {
-		estudiante.setId(identificador);
-
-		String cedula = "1001865409";
-		Estudiante estu1 = this.estudianteService.seleccionarPorCedula(cedula);
-		estu1.setCedula(estudiante.getCedula());
-
-		this.estudianteService.actualizar(estu1);
+	@PatchMapping
+	@ResponseStatus(code = HttpStatus.OK)
+	public void actualizarParcial(@RequestBody EstudianteTO estudiante) {
+		this.estudianteService.actualizarParcial(estudiante.getSuscripcion(), estudiante.getCedula());
 	}
 
 	// DELETE

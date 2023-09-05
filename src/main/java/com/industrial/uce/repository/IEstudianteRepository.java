@@ -14,7 +14,7 @@ public interface IEstudianteRepository {
 
 	public void actualizar(Estudiante estudiante);
 
-	public void actualizarParcial(String suscripcionActual, String suscripcionNueva);
+	public void actualizarParcial(Boolean suscripcion, String cedula);
 
 	public void borrar(Integer id);
 	

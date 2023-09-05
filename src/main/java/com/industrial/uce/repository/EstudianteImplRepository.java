@@ -40,11 +40,11 @@ public class EstudianteImplRepository implements IEstudianteRepository {
 	}
 
 	@Override
-	public void actualizarParcial(String cedulaActual, String cedulaNueva) {
+	public void actualizarParcial(Boolean suscripcion, String cedula) {
 		Query myQuery = this.entityManager
-				.createQuery("UPDATE Estudiante e SET e.cedula = :datoCedula WHERE e.cedula =:datoCondicion");
-		myQuery.setParameter("datoCedula", cedulaNueva);
-		myQuery.setParameter("datoCondicion", cedulaActual);
+				.createQuery("UPDATE Estudiante e SET e.suscripcion = :datoSuscripcion WHERE e.cedula =:datoCondicion");
+		myQuery.setParameter("datoSuscripcion", suscripcion);
+		myQuery.setParameter("datoCondicion", cedula);
 		myQuery.executeUpdate();
 
 	}

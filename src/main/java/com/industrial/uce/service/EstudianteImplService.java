@@ -22,8 +22,8 @@ public class EstudianteImplService implements IEstudianteService {
 	}
 
 	@Override
-	public Estudiante seleccionarPorCedula(String cedula) {
-		return this.estudianteRepository.seleccionarPorCedula(cedula);
+	public EstudianteTO seleccionarPorCedula(String cedula) {
+		return this.convertir(this.estudianteRepository.seleccionarPorCedula(cedula));
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class EstudianteImplService implements IEstudianteService {
 		return listaTO;
 	}
 
-	private EstudianteTO convertir(Estudiante estudiante) {
+	public EstudianteTO convertir(Estudiante estudiante) {
 		EstudianteTO estu = new EstudianteTO();
 		estu.setId(estudiante.getId());
 		estu.setCedula(estudiante.getCedula());
@@ -64,6 +64,11 @@ public class EstudianteImplService implements IEstudianteService {
 		estu.setImagen(estudiante.getImagen());
 
 		return estu;
+	}
+
+	@Override
+	public void actualizarParcial(Boolean suscripcion, String cedula) {
+		this.estudianteRepository.actualizarParcial(suscripcion, cedula);
 	}
 
 }
