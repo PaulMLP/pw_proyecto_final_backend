@@ -38,11 +38,17 @@ public class Estudiante {
 	@Column(name = "estu_suscripcion")
 	private Boolean suscripcion;
 
-	@Column(name = "estu_imagen")
+	@Column(name = "estu_imagen",columnDefinition = "text")
 	private String imagen;
 	
 	@OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Queja> quejas;
+	
+	@OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Comentario> comentarios;
+	
+	@OneToMany(mappedBy = "estudiante", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Foro> foros;
 
 	// Getters y Setters
 	public Integer getId() {
@@ -101,4 +107,5 @@ public class Estudiante {
 		this.quejas = quejas;
 	}
 
+	
 }
